@@ -9,11 +9,11 @@ import java.util.Properties;
 import org.apache.activemq.artemis.jms.client.ActiveMQConnectionFactory;
 import org.messaginghub.pooled.jms.JmsPoolConnectionFactory;
 
-public class HelloWorld {
+public class ArtemisCoreJMSHelloWorld {
 
     public static void main(String[] args) throws Exception {
         Properties props = new Properties();
-        try (InputStream input = HelloWorld.class.getClassLoader().getResourceAsStream("application.properties")) {
+        try (InputStream input = ArtemisCoreJMSHelloWorld.class.getClassLoader().getResourceAsStream("application.properties")) {
             if (input == null) {
                 throw new IllegalStateException("application.properties not found in classpath");
             }

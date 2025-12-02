@@ -26,6 +26,11 @@
       <artifactId>artemis-jakarta-client</artifactId>
       <version>2.33.0.redhat-00018</version>
     </dependency>
+    <dependency>
+      <groupId>org.apache.qpid</groupId>
+      <artifactId>qpid-jms-client</artifactId>
+      <version>2.7.0.redhat-00002</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -44,10 +49,25 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.6.2</version>
         <configuration>
-          <mainClass>org.messaginghub.jms.example.HelloWorld</mainClass>
+          <mainClass>${exec.mainClass}</mainClass>
         </configuration>
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>artemis-core-jms</id>
+      <properties>
+        <exec.mainClass>org.messaginghub.jms.example.ArtemisCoreJMSHelloWorld</exec.mainClass>
+      </properties>
+    </profile>
+    <profile>
+      <id>qpid-jms</id>
+      <properties>
+        <exec.mainClass>org.messaginghub.jms.example.QpidJMSHelloWorld</exec.mainClass>
+      </properties>
+    </profile>
+  </profiles>
 
 </project>
